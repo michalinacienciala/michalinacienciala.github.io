@@ -21,11 +21,14 @@ import {
   CHAIN_ID_APTOS,
   isValidAptosType,
   CHAIN_ID_ARBITRUM,
+  CHAIN_ID_ARBITRUM_SEPOLIA,
   CHAIN_ID_INJECTIVE,
   terra,
   CHAIN_ID_NEAR,
   CHAIN_ID_BASE,
+  CHAIN_ID_BASE_SEPOLIA,
   CHAIN_ID_OPTIMISM,
+  CHAIN_ID_OPTIMISM_SEPOLIA,
   CHAIN_ID_SEPOLIA,
   CHAIN_ID_SUI,
 } from "@certusone/wormhole-sdk";
@@ -167,8 +170,16 @@ export default function SmartAddress({
     ? `https://${CLUSTER === "testnet" ? "goerli." : ""}basescan.org/${
         isAsset ? "token" : "address"
       }/${useableAddress}`
+    : chainId === CHAIN_ID_BASE_SEPOLIA
+    ? `https://${CLUSTER === "testnet" ? "sepolia." : ""}basescan.org/${
+        isAsset ? "token" : "address"
+      }/${useableAddress}`
     : chainId === CHAIN_ID_OPTIMISM
     ? `https://${CLUSTER === "testnet" ? "goerli-" : ""}optimism.etherscan.io/${
+        isAsset ? "token" : "address"
+      }/${useableAddress}`
+    : chainId === CHAIN_ID_OPTIMISM_SEPOLIA
+    ? `https://${CLUSTER === "testnet" ? "sepolia-" : ""}optimism.etherscan.io/${
         isAsset ? "token" : "address"
       }/${useableAddress}`
     : chainId === CHAIN_ID_KARURA
@@ -209,6 +220,10 @@ export default function SmartAddress({
       }address/${useableAddress}`
     : chainId === CHAIN_ID_ARBITRUM
     ? `https://${CLUSTER === "testnet" ? "goerli." : ""}arbiscan.io/${
+        isAsset ? "token" : "address"
+      }/${useableAddress}`
+    : chainId === CHAIN_ID_ARBITRUM_SEPOLIA
+    ? `https://${CLUSTER === "testnet" ? "sepolia." : ""}arbiscan.io/${
         isAsset ? "token" : "address"
       }/${useableAddress}`
     : chainId === CHAIN_ID_APTOS

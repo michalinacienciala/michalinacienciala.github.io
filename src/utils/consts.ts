@@ -4,9 +4,11 @@ import {
   CHAIN_ID_ALGORAND,
   CHAIN_ID_APTOS,
   CHAIN_ID_ARBITRUM,
+  CHAIN_ID_ARBITRUM_SEPOLIA,
   CHAIN_ID_AURORA,
   CHAIN_ID_AVAX,
   CHAIN_ID_BASE,
+  CHAIN_ID_BASE_SEPOLIA,
   CHAIN_ID_BSC,
   CHAIN_ID_CELO,
   CHAIN_ID_ETH,
@@ -19,6 +21,7 @@ import {
   CHAIN_ID_NEON,
   CHAIN_ID_OASIS,
   CHAIN_ID_OPTIMISM,
+  CHAIN_ID_OPTIMISM_SEPOLIA,
   CHAIN_ID_POLYGON,
   CHAIN_ID_SEPOLIA,
   CHAIN_ID_SOLANA,
@@ -99,7 +102,12 @@ export const CHAINS: ChainInfo[] =
         },
         {
           id: CHAIN_ID_ARBITRUM,
-          name: "Arbitrum",
+          name: "Arbitrum Goerli",
+          logo: arbitrumIcon,
+        },
+        {
+          id: CHAIN_ID_ARBITRUM_SEPOLIA,
+          name: "Arbitrum Sepolia",
           logo: arbitrumIcon,
         },
         {
@@ -115,6 +123,11 @@ export const CHAINS: ChainInfo[] =
         {
           id: CHAIN_ID_BASE,
           name: "Base Goerli",
+          logo: baseIcon,
+        },
+        {
+          id: CHAIN_ID_BASE_SEPOLIA,
+          name: "Base Sepolia",
           logo: baseIcon,
         },
         {
@@ -179,12 +192,17 @@ export const CHAINS: ChainInfo[] =
         },
         {
           id: CHAIN_ID_OPTIMISM,
-          name: "Optimism (Goerli)",
+          name: "Optimism Goerli",
+          logo: optimismIcon,
+        },
+        {
+          id: CHAIN_ID_OPTIMISM_SEPOLIA,
+          name: "Optimism Sepolia",
           logo: optimismIcon,
         },
         {
           id: CHAIN_ID_POLYGON,
-          name: "Polygon",
+          name: "Polygon Mumbai",
           logo: polygonIcon,
         },
         {
@@ -282,9 +300,12 @@ export const CHAINS_WITH_NFT_SUPPORT = CHAINS.filter(
     id === CHAIN_ID_CELO ||
     id === CHAIN_ID_NEON ||
     id === CHAIN_ID_ARBITRUM ||
+    id === CHAIN_ID_ARBITRUM_SEPOLIA ||
     id === CHAIN_ID_MOONBEAM ||
     id === CHAIN_ID_BASE ||
-    id === CHAIN_ID_OPTIMISM
+    id === CHAIN_ID_BASE_SEPOLIA ||
+    id === CHAIN_ID_OPTIMISM ||
+    id === CHAIN_ID_OPTIMISM_SEPOLIA
 );
 export type ChainsById = { [key in ChainId]: ChainInfo };
 export const CHAINS_BY_ID: ChainsById = CHAINS.reduce((obj, chain) => {
@@ -330,13 +351,13 @@ export const getDefaultNativeCurrencySymbol = (chainId: ChainId) =>
     ? "XPLA"
     : chainId === CHAIN_ID_APTOS
     ? "APTOS"
-    : chainId === CHAIN_ID_ARBITRUM
+    : chainId === CHAIN_ID_ARBITRUM || chainId === CHAIN_ID_ARBITRUM_SEPOLIA
     ? "ETH"
     : chainId === CHAIN_ID_MOONBEAM
     ? "GLMR"
-    : chainId === CHAIN_ID_BASE
+    : chainId === CHAIN_ID_BASE || chainId === CHAIN_ID_BASE_SEPOLIA
     ? "ETH"
-    : chainId === CHAIN_ID_OPTIMISM
+    : chainId === CHAIN_ID_OPTIMISM || chainId === CHAIN_ID_OPTIMISM_SEPOLIA
     ? "ETH"
     : chainId === CHAIN_ID_SUI
     ? "SUI"
@@ -425,9 +446,12 @@ export const KLAYTN_NETWORK_CHAIN_ID = CLUSTER === "testnet" ? 1001 : 1381;
 export const CELO_NETWORK_CHAIN_ID = CLUSTER === "testnet" ? 44787 : 1381;
 export const NEON_NETWORK_CHAIN_ID = CLUSTER === "testnet" ? 245022926 : 1381;
 export const ARBITRUM_NETWORK_CHAIN_ID = CLUSTER === "testnet" ? 421613 : 1381;
+export const ARBITRUM_SEPOLIA_NETWORK_CHAIN_ID = CLUSTER === "testnet" ? 421614 : 1381;
 export const MOONBEAM_NETWORK_CHAIN_ID = CLUSTER === "testnet" ? 1287 : 1381;
 export const BASE_NETWORK_CHAIN_ID = CLUSTER === "testnet" ? 84531 : 1381;
+export const BASE_SEPOLIA_NETWORK_CHAIN_ID = CLUSTER === "testnet" ? 84532 : 1381;
 export const OPTIMISM_NETWORK_CHAIN_ID = CLUSTER === "testnet" ? 420 : 1381;
+export const OPTIMISM_SEPOLIA_NETWORK_CHAIN_ID = CLUSTER === "testnet" ? 11155420 : 1381;
 export const getEvmChainId = (chainId: ChainId) =>
   chainId === CHAIN_ID_ETH
     ? ETH_NETWORK_CHAIN_ID
@@ -457,12 +481,18 @@ export const getEvmChainId = (chainId: ChainId) =>
     ? NEON_NETWORK_CHAIN_ID
     : chainId === CHAIN_ID_ARBITRUM
     ? ARBITRUM_NETWORK_CHAIN_ID
+    : chainId === CHAIN_ID_ARBITRUM_SEPOLIA
+    ? ARBITRUM_SEPOLIA_NETWORK_CHAIN_ID
     : chainId === CHAIN_ID_MOONBEAM
     ? MOONBEAM_NETWORK_CHAIN_ID
     : chainId === CHAIN_ID_BASE
     ? BASE_NETWORK_CHAIN_ID
+    : chainId === CHAIN_ID_BASE_SEPOLIA
+    ? BASE_SEPOLIA_NETWORK_CHAIN_ID
     : chainId === CHAIN_ID_OPTIMISM
     ? OPTIMISM_NETWORK_CHAIN_ID
+    : chainId === CHAIN_ID_OPTIMISM_SEPOLIA
+    ? OPTIMISM_SEPOLIA_NETWORK_CHAIN_ID
     : undefined;
 export const SOLANA_HOST = process.env.REACT_APP_SOLANA_API_URL
   ? process.env.REACT_APP_SOLANA_API_URL

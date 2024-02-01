@@ -20,9 +20,12 @@ import {
   CHAIN_ID_XPLA,
   CHAIN_ID_APTOS,
   CHAIN_ID_ARBITRUM,
+  CHAIN_ID_ARBITRUM_SEPOLIA,
   CHAIN_ID_INJECTIVE,
   CHAIN_ID_BASE,
+  CHAIN_ID_BASE_SEPOLIA,
   CHAIN_ID_OPTIMISM,
+  CHAIN_ID_OPTIMISM_SEPOLIA,
   CHAIN_ID_SEPOLIA,
   CHAIN_ID_SUI,
 } from "@certusone/wormhole-sdk";
@@ -133,9 +136,17 @@ export default function ShowTx({
       ? `https://${CLUSTER === "testnet" ? "goerli." : ""}basescan.org/tx/${
           tx?.id
         }`
+      : chainId === CHAIN_ID_BASE_SEPOLIA
+      ? `https://${CLUSTER === "testnet" ? "sepolia." : ""}basescan.org/tx/${
+          tx?.id
+        }`
       : chainId === CHAIN_ID_OPTIMISM
       ? `https://${
           CLUSTER === "testnet" ? "goerli-" : ""
+        }optimism.etherscan.io/tx/${tx?.id}`
+      : chainId === CHAIN_ID_OPTIMISM_SEPOLIA
+      ? `https://${
+          CLUSTER === "testnet" ? "sepolia-" : ""
         }optimism.etherscan.io/tx/${tx?.id}`
       : chainId === CHAIN_ID_XPLA
       ? `https://explorer.xpla.io/${
@@ -143,6 +154,10 @@ export default function ShowTx({
         }tx/${tx?.id}`
       : chainId === CHAIN_ID_ARBITRUM
       ? `https://${CLUSTER === "testnet" ? "goerli." : ""}arbiscan.io/tx/${
+          tx?.id
+        }`
+      : chainId === CHAIN_ID_ARBITRUM_SEPOLIA
+      ? `https://${CLUSTER === "testnet" ? "sepolia." : ""}arbiscan.io/tx/${
           tx?.id
         }`
       : chainId === CHAIN_ID_APTOS
