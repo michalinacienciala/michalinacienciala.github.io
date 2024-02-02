@@ -41,7 +41,6 @@ import {
   XPLA_LCD_CLIENT_CONFIG,
   getEvmChainId,
   getTerraConfig,
-  getTerraGasPricesUrl,
   getTokenBridgeAddressForChain,
 } from "../utils/consts";
 import { getInjectiveWasmClient } from "../utils/injective";
