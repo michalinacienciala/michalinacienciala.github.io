@@ -64,8 +64,8 @@
     "use-debounce": "^7.0.0"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired --max_old_space_size=6144 build",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider react-app-rewired start",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider react-app-rewired --max_old_space_size=6144 build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
@@ -125,5 +125,8 @@
     "url": "^0.11.0",
     "util": "^0.12.4",
     "vm-browserify": "^1.1.2"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }
